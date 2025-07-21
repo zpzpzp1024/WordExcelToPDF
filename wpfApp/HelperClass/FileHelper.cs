@@ -53,17 +53,7 @@ namespace wpfApp.HelperClass
             var finalName = "";
             try
             {
-                if (wordFiles.Count > 0)
-                {
-                    finalName = Path.Combine(desktopPath,
-                        Path.GetFileNameWithoutExtension(wordFiles[0]) + ".pdf");
-                    foreach (var VARIABLE in wordFiles)
-                    {
-                        var sd = Path.Combine(tempPath, Path.GetFileNameWithoutExtension(VARIABLE) + ".pdf");
-                        WordExcel2PDF.WordToPdf(VARIABLE, sd);
-                        newFilePath.Add(sd);
-                    }
-                }
+
 
                 if (excelFiles.Count > 0)
                 {
@@ -73,6 +63,19 @@ namespace wpfApp.HelperClass
                     {
                         var sd = Path.Combine(tempPath, Path.GetFileNameWithoutExtension(VARIABLE) + ".pdf");
                         WordExcel2PDF.ExcelToPdf(VARIABLE, sd);
+                        newFilePath.Add(sd);
+                    }
+                }
+
+
+                if (wordFiles.Count > 0)
+                {
+                    finalName = Path.Combine(desktopPath,
+                        Path.GetFileNameWithoutExtension(wordFiles[0]) + ".pdf");
+                    foreach (var VARIABLE in wordFiles)
+                    {
+                        var sd = Path.Combine(tempPath, Path.GetFileNameWithoutExtension(VARIABLE) + ".pdf");
+                        WordExcel2PDF.WordToPdf(VARIABLE, sd);
                         newFilePath.Add(sd);
                     }
                 }
